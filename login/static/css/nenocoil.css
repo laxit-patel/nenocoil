@@ -1,0 +1,10 @@
+.inset-box-shadow
+{
+   -webkit-box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+-moz-box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+}
+.neno-color
+{
+   color: rgb(254, 35, 6);
+}

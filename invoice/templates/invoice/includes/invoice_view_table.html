@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!-- Fresh Table CSS-->
+  <link type="text/css" href="{% static 'vendor/fresh_table/css/fresh-table.css' %}" rel="stylesheet" />
+<div class="row">
+            <div class="col-md-12 col-md-offset-2">
+                                
+                <div class="fresh-table full-color-azure">
+                <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange                  
+                        Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+                -->
+                
+                    <div class="toolbar">
+                        
+                    </div>
+                    
+                    <table id="fresh-table" class="table">
+                        <thead>
+                            <th data-field="id">Id</th>
+                        	<th data-field="name" data-sortable="true">Client</th>
+                        	<th data-field="salary" data-sortable="true">Date</th>
+                        	
+                        	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            	<td>1</td>
+                            	<td>Newtronic Life Care</td>
+                            	<td>26/11/2018</td>
+                            	
+                            	<td></td>
+                            </tr>
+                            <tr>
+                            	<td>2</td>
+                            	<td>Labtop</td>
+                            	<td>22/11/2018</td>
+                            	
+                            	<td></td>
+                            </tr>
+                            <tr>
+                            	<td>3</td>
+                            	<td>BRC</td>
+                            	<td>15/11/2018</td>
+                            	
+                            	<td></td>
+                            </tr>
+                            
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+            </div>
+        </div>
