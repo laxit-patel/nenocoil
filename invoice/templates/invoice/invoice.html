@@ -19,7 +19,7 @@
   <link href="{% static 'vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{% static 'css/argon.css' %}" rel="stylesheet">
-  
+
 </head>
 
 <body>
@@ -47,28 +47,28 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
         <div class="header-body">
-          
+
         </div>
       </div>
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
-     
+
 	 <div class="row">
 	 <!--Generate Invoice-->
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow ">
             <div class="card-body pt-0 pt-md-4">
-              
-              <div class="text-center"> 
+
+              <div class="text-center">
               <div class="mb-3">
 				<small class="text-uppercase font-weight-bold">Generate</small>
 				</div>
               </div>
-			  
+
 			  <div class="row">
 			  <div class="col-lg-12 col-sm-6">
-              
+
               <div class="form-group">
                 <div class="input-group input-group-alternative mb-4">
                   <div class="input-group-prepend">
@@ -82,7 +82,7 @@
 				  </select>
                 </div>
               </div>
-			  
+
 			  <div class="form-group">
                 <div class="input-group input-group-alternative mb-4">
                   <div class="input-group-prepend">
@@ -96,32 +96,30 @@
 				  </select>
                 </div>
               </div>
-			  
+
             </div>
 			  </div>
-			  
+
 			  <div class="text-center">
 			  <button class="btn btn-md btn-outline-primary" type="button">Generate</button>
 			  </div>
-			  
+
             </div>
           </div>
         </div>
-		
+
 		<!--Invoice Table-->
-       
-            
+
+
            <div class="wrapper col-xl-8 order-xl-1">
     <div class="container">
-              <!--Table Starts-->
-				{% include "invoice/includes/invoice_view_table.html" %}
-			  <!--Table Ends-->
-           
+
+
           </div>
         </div>
       </div>
-	 
-      
+
+
       <!-- Footer -->
       {%  include "dashboard/includes/dashboard_footer.html" %}
     </div>
@@ -135,96 +133,11 @@
   <script src="{% static 'vendor/chart.js/dist/Chart.extension.js' %}"></script>
   <!-- Argon JS -->
   <script src="{% static 'js/argon.js?v=1.0.0' %}"></script>
-  <!-- Freshtable JS-->
-  <script src="{% static 'vendor/fresh_table/js/bootstrap-table.js' %}"></script>
-  
-  <!--Table Script Starts-->
-  
-  <script type="text/javascript">
-        var $table = $('#fresh-table'),
-            $alertBtn = $('#alertBtn'),
-            full_screen = true;
-            
-        $().ready(function(){
-            $table.bootstrapTable({
-                toolbar: ".toolbar",
-    
-                showRefresh: true,
-                search: true,
-                showToggle: true,
-                showColumns: true,
-                pagination: true,
-                striped: true,
-				
-                pageSize: 8,
-                pageList: [8,10,25,50,100],
-                
-                formatShowingRows: function(pageFrom, pageTo, totalRows){
-                    //do nothing here, we don't want to show the text "showing x of y from..." 
-                },
-                formatRecordsPerPage: function(pageNumber){
-                    return pageNumber + " rows visible";
-                },
-                icons: {
-                    refresh: 'fa fa-refresh',
-                    toggle: 'fa fa-th-list',
-                    columns: 'fa fa-columns',
-                    detailOpen: 'fa fa-plus-circle',
-                    detailClose: 'fa fa-minus-circle'
-                }
-            });
-            
-                        
-            
-            $(window).resize(function () {
-                $table.bootstrapTable('resetView');
-            });
-    
-            
-            window.operateEvents = {
-                'click .like': function (e, value, row, index) {
-                    alert('You click like icon, row: ' + JSON.stringify(row));
-                    console.log(value, row, index);
-                },
-                'click .edit': function (e, value, row, index) {
-                    alert('You click edit icon, row: ' + JSON.stringify(row));
-                    console.log(value, row, index);    
-                },
-                'click .remove': function (e, value, row, index) {
-                    $table.bootstrapTable('remove', {
-                        field: 'id',
-                        values: [row.id]
-                    });
-            
-                }
-            };
-            
-            $alertBtn.click(function () {
-                alert("You pressed on Alert");
-            });
-            
-        });
-            
-    
-        function operateFormatter(value, row, index) {
-            return [
-                '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
-                    '<i class="fa fa-heart"></i>',
-                '</a>',
-                '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
-                    '<i class="fa fa-edit"></i>',
-                '</a>',
-                '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
-                    '<i class="fa fa-remove"></i>',
-                '</a>'
-            ].join('');
-        }
-    
-            
-    </script>
-  
-  <!--Table Script Ends-->
-  
+
+
+
+
+
 </body>
 
 </html>
