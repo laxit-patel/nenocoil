@@ -8,3 +8,6 @@ class User(models.Model):
     User_Role = models.CharField(max_length=32)
     User_Password = models.CharField(max_length=64)
     User_Exist = models.BooleanField(default=True)
+
+    def __str__(self):
+        return seld.User_Name

@@ -1,0 +1,20 @@
+
+.neno-color
+{
+   color: rgb(254, 35, 6);
+}
+
+.nc-card-inset-shadow{
+    -webkit-box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+    -moz-box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+    box-shadow: inset 0px 0px 300px 38px rgba(5,5,250,0.25);
+}
+.nc-card-shadow{
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
+    transition: 0.2s;
+}
+.nc-card-shadow:hover{
+    box-shadow: 0px 0px 30px 3px rgb(0, 0, 0);
+    transition: 0.2s;
+}
+
