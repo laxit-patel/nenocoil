@@ -7,7 +7,14 @@
                   <img alt="Image placeholder" src="{% static 'img/theme/pp.jpg' %}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{user_email}}</span>
+                  <span class="mb-0 text-sm  font-weight-bold">
+                      {{ user_email }}
+                      {% if user_email|length > 0 %}
+                        {{ user_email }}
+                      {% else %}
+                        Stranger
+                      {% endif %}
+                  </span>
                 </div>
               </div>
             </a>

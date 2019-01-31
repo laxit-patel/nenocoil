@@ -5,6 +5,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('home.urls')),
     url(r'^login/', include('login.urls')),
+    url(r'^logout/', include('login.urls')),
     url(r'^order/', include('order.urls')),
     url(r'^invoice/', include('invoice.urls')),
     url(r'^dashboard/', include('dashboard.urls')),

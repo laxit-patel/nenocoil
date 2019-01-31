@@ -10,4 +10,4 @@ class User(models.Model):
     User_Exist = models.BooleanField(default=True)
 
     def __str__(self):
-        return seld.User_Name
+        return self.User_Name

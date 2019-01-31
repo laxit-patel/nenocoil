@@ -18,17 +18,18 @@ def dashboard(request):
         user_email = request.POST.get('user_email')
         password = request.POST.get('user_password')
 
-        user_name = User.objects.all().values('User_Name')
-
+        user_data = User.objects.all()
+        user_name = user_email.split("@", maxsplit=1)[0]
+        print(user_name)
         # adding the values in a context variable
         context = {
-            'user_name': user_name,
             'user_email': user_email,
+            'user_name': user_name,
             'password': password,
 
         }
 
-        # getting our showdata template
+        # getting our Dashboard template
         template = loader.get_template('dashboard/dashboard.html')
 
         # returing the template
