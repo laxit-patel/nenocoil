@@ -9,3 +9,5 @@ class Client(models.Model):
     Client_Email = models.EmailField(max_length=254)
     Client_Exist = models.BooleanField(default=True)
 
+
+

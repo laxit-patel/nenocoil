@@ -23,7 +23,7 @@ def key_generator(entity):
         new_counter = int(prev_counter) + 1
         counter = str(new_counter).zfill(4)
     else:
-        initial = "Invalid Entity"
+        entity = "Invalid Entity"
 
     if entity == "Invalid Entity":
         return "Invalid Entity"

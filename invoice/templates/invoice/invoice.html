@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 
@@ -50,57 +51,61 @@
         <div class="header-body">
 <div class="text-center ">
 				<h1 class=" font-weight-bold text-white" style="letter-spacing: 10px; font-size: xx-large; padding-top: auto">Generate Invoice</h1>
+
 				</div>
+
         </div>
       </div>
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
 
+
+
 	 <div class="row">
 	 <!--Generate Invoice-->
         <div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow bg-gradient-danger">
             <div class="card-body pt-0 pt-md-4">
-
-
+                <form action="generate" method="POST">
+                {% csrf_token %}
 
 
 			  <div class="row">
 
                 <div class="col-lg-6 ">
 
-                  <fieldset class="bg-gradient-info container-fluid rounded" ><legend class="text-white "  style="font-size:xx-large; font-weight: bolder;letter-spacing:10px;text-shadow: 3px 3px 10px black">Client</legend>
+                  <fieldset class="bg-gradient-info container-fluid rounded" ><legend class="text-white "  style="font-size:xx-large;font-weight: bolder; letter-spacing:10px;text-shadow: 3px 3px 10px black">Client</legend>
 
-              <div class="form-group ">
-                <div class="input-group input-group-alternative ">
+                  <div class="form-group">
+                <div class="input-group input-group-alternative mb-4">
                   <div class="input-group-prepend bg-dark rounded">
                     <span class="input-group-text bg-dark rounded"><i class="ni ni-circle-08 text-info"></i></span>
                   </div>
-                  <select class="custom-select bg-dark custom-select-lg font-weight-bold">
-					<option selected disabled class="font-wight-bold ">-- Select Client --</option>
+                  <select class="custom-select bg-dark custom-select-lg font-weight-bold" name="Invoice_Client">
+					<option selected disabled>-- Select Order --</option>
                     {% block client %}
 
-                    {% for client in client_name %}
+                    {% for client in client_data %}
 
                     <option class="font-wight-bold bg-dark text-white "  value={{ client.Client_Id }} >{{ client.Client_Name }}</option>
 
-                    {% endfor%}
+                    {% endfor %}
 
                     {% endblock %}
 				  </select>
                 </div>
               </div>
 
-                  <div class="text-center mt--2 text-white" style="letter-spacing: 10px; font-size: large">---Or---</div>
+                   <div class="text-center mt--2 text-white" style="letter-spacing: 10px; font-size: large">---Or---</div>
 
                   <div class="text-center mt-3" style="padding-bottom: 8%">
-                    <button class="btn btn-md btn-block text-capitalized btn-dark" style="color:grey" type="button" data-toggle="modal" data-target="#modal-add-client"><b>Add New <span class="text-info" style="font-size:larger">Client</span></b></button>
+                    <button class="btn btn-md btn-block text-capitalized btn-dark" style="color:grey" type="button" data-toggle="modal" data-target="#modal-add-order"><b>Add New <span class="text-success" style="font-size:larger">Order</span></b></button>
 			  </div>
 
                   </fieldset>
 
-            </div>
+                </div>
 
                 <div class="col-lg-6 ">
 
@@ -111,7 +116,7 @@
                   <div class="input-group-prepend bg-dark rounded">
                     <span class="input-group-text bg-dark rounded"><i class="ni ni-single-copy-04 text-success"></i></span>
                   </div>
-                  <select class="custom-select bg-dark custom-select-lg font-weight-bold">
+                  <select class="custom-select bg-dark custom-select-lg font-weight-bold" name="Invoice_Order">
 					<option selected disabled>-- Select Order --</option>
                     {% block order %}
 
@@ -141,9 +146,9 @@
               <hr>
 
 			  <div class="text-center ">
-                <button class="btn btn-md btn-block text-uppercase  btn-outline-dark text-white " type="button" style="letter-spacing: 10px; font-size: large"><b>Generate</b></button>
+                  <button type="submit" class="btn btn-md btn-block text-uppercase  btn-outline-dark text-white " type="button" style="letter-spacing: 10px; font-size: large"><b>Generate</b></button>
 			  </div>
-
+                </form>
             </div>
           </div>
         </div>
@@ -276,7 +281,7 @@
             <div class="form-group ">
                 <div class="input-group input-group-alternative ">
                     <div class="input-group-prepend bg-dark rounded-left">
-                        <span class="input-group-text bg-dark rounded text-info"><i class="ni ni-badge "></i></span>
+                        <span class="input-group-text bg-dark rounded text-success"><i class="ni ni-badge "></i></span>
                     </div>
                     <input class="form-control bg-dark" placeholder="Order Id" value="{{ order_key }}" style="padding-left:10px;" type="text">
                 </div>
@@ -285,7 +290,7 @@
             <div class="form-group">
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend bg-dark rounded-left">
-                        <span class="input-group-text bg-dark rounded text-info"><i class="ni ni-circle-08"></i></span>
+                        <span class="input-group-text bg-dark rounded text-success"><i class="ni ni-circle-08"></i></span>
                     </div>
                     <input class="form-control bg-dark" placeholder="Order Id" style="padding-left:10px;" type="text">
                 </div>
@@ -294,7 +299,7 @@
           <div class="form-group ">
                 <div class="input-group input-group-alternative ">
                     <div class="input-group-prepend bg-dark rounded-left" >
-                        <span class="input-group-text bg-dark  text-info"><i class="ni ni-money-coins"></i></span>
+                        <span class="input-group-text bg-dark  text-success"><i class="ni ni-money-coins"></i></span>
                     </div>
                     <input class="form-control bg-dark" placeholder="Client GSTIN" style="padding-left:10px;" type="text">
                 </div>
@@ -303,7 +308,7 @@
           <div class="form-group ">
                 <div class="input-group input-group-alternative ">
                     <div class="input-group-prepend bg-dark rounded-left" >
-                        <span class="input-group-text bg-dark  text-info"><i class="ni ni-email-83"></i></span>
+                        <span class="input-group-text bg-dark  text-success"><i class="ni ni-email-83"></i></span>
                     </div>
                     <input class="form-control bg-dark" placeholder="Client Email" style="padding-left:10px;" type="text">
                 </div>
@@ -312,9 +317,9 @@
           <div class="form-group ">
                 <div class="input-group input-group-alternative ">
                     <div class="input-group-prepend bg-dark rounded-left" >
-                        <span class="input-group-text bg-dark  text-info"><i class="ni ni-delivery-fast"></i></span>
+                        <span class="input-group-text bg-dark  text-success"><i class="ni ni-delivery-fast"></i></span>
                     </div>
-                    <textarea class="form-control bg-dark" id="" rows="3" placeholder="Client Address" style="padding-left:10px;"></textarea>
+                    <textarea class="form-control bg-dark"  rows="3" placeholder="Client Address" style="padding-left:10px;"></textarea>
                 </div>
             </div>
             </form>
