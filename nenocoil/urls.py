@@ -14,6 +14,5 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^product/', include('product.urls')),
     url(r'^design/', include('design.urls')),
-    url(r'^drawing/', include('drawing.urls')),
     url(r'^admin/', admin.site.urls),
 ]

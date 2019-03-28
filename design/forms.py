@@ -3,7 +3,7 @@ from django.forms import TextInput
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field, Button
 from crispy_forms.bootstrap import PrependedText, Div
-from reservoir.key_generator import key_generator
+from modules.key_generator import key_generator
 from design.models import Design
 
 
@@ -11,7 +11,16 @@ class New_Design_Form(forms.ModelForm):
 
     class Meta:
         model = Design
-        fields = ('Design_Id', 'Design_Dimension', 'Design_Connection', 'Design_Fpi', 'Design_Tube', 'Design_Hairpin', 'Design_Drawing' )
+        fields = (
+            'Design_Id',
+            'Design_Dimension',
+            'Design_Connection',
+            'Design_Fpi',
+            'Design_Tube',
+            'Design_Hairpin',
+            'Design_Drawing',
+            'Design_Revision',
+            'Design_Origin')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,6 +29,7 @@ class New_Design_Form(forms.ModelForm):
         self.helper.form_method = 'POST'
         self.fields['Design_Id'].initial = key_generator('Design')
 
+
         self.helper.layout = Layout(
             Field('Design_Id', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
             Field('Design_Dimension', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
@@ -27,18 +37,8 @@ class New_Design_Form(forms.ModelForm):
             Field('Design_Fpi', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
             Field('Design_Tube', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
             Field('Design_Hairpin', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
-            HTML("<div class='row'>"),
-            HTML("<div class='col-md-9'>"),
-            Field('Design_Drawing', css_class='w-100 form-control text-dark custom-select', wrapper_class='form-group', ),
-            HTML("</div>"),
-            HTML("<div class='col-md-3'>"),
-            HTML("<div class='form-group control-group'>"),
-            HTML("<label for='add_new_design'>&nbsp</label>"),
-            HTML("<a href='/design/add_new_drawing'>"),
-            Button('add_new_drawing', 'add', css_class='material-icons form-control text-white bg-success', ),
-            HTML("</a>"),
-            HTML("</div>"),
-            HTML("</div>"),
-            HTML("</div>"),
+            Field('Design_Drawing', css_class='w-100 form-control text-dark ', wrapper_class='form-group', ),
+            Field('Design_Revision', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
+            Field('Design_Origin', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),
             Submit('submit', 'Add & Exit', css_class='btn btn-block btn-outline-dark'),
         )

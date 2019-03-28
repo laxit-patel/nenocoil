@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from client.models import Client
 from order.models import Order
-from reservoir.key_generator import key_generator
+from modules.key_generator import key_generator
 from .forms import Invoice, New_Order_Form
 from client.forms import New_Client_Form
 from django.http import HttpResponseRedirect

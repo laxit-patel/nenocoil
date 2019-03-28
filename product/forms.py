@@ -1,9 +1,10 @@
 from django import forms
 from django.forms import TextInput
+from design.models import Design
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field, Button
 from crispy_forms.bootstrap import PrependedText, Div
-from reservoir.key_generator import key_generator
+from modules.key_generator import key_generator
 from product.models import Product
 
 
@@ -19,6 +20,9 @@ class New_Product_Form(forms.ModelForm):
         self.helper = FormHelper
         self.helper.form_method = 'POST'
         self.fields['Product_Id'].initial = key_generator('Product')
+        rows = Design.objects.all()
+        design = [(i.Design_Id, i.Design_Dimension) for i in rows]
+        self.fields['Product_Design'].choices = design
 
         self.helper.layout = Layout(
             Field('Product_Id', css_class='w-100 form-control text-dark', wrapper_class='form-group', ),

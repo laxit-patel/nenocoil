@@ -4,7 +4,7 @@ from client.models import Client
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field
 from crispy_forms.bootstrap import PrependedText, Div
-from reservoir.key_generator import key_generator
+from modules.key_generator import key_generator
 
 
 class New_Client_Form(forms.ModelForm):
