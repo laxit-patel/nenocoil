@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title></title>
+   <!--Loading Static File-->
+  {% load staticfiles %}
+  <!-- Favicon -->
+  <!-- Favicon -->
+  <link href="{% static 'img/brand/logo.png' %}" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{% static 'vendor/nucleo/css/nucleo.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="{% static 'css/argon.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Sidenav -->
+  {% include "dashboard/includes/dashboard_toggle_navbar.html" %}
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Invoice</a>
+        <!-- Form -->
+        {% include "dashboard/includes/dashboard_header_search.html" %}
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            {% include "dashboard/includes/dashboard_header_user.html" %}
+            {% include "dashboard/includes/dashboard_header_user_menu.html" %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+      <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+
+    <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 ">
+                <div class="fresh-table bg-gradient-dark text-white" id="dark-table">
+                    <div class="toolbar"></div>
+                    <table id="fresh-table" class="table">
+                        <thead>
+                            <th data-field="id">ID</th>
+                        	<th data-field="name" data-sortable="true">Name</th>
+                        	<th data-field="salary" data-sortable="true">Salary</th>
+                        	<th data-field="country" data-sortable="true">Country</th>
+                        	<th data-field="city">City</th>
+                        	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            	<td>1</td>
+                            	<td>Dakota Rice</td>
+                            	<td>$36,738</td>
+                            	<td>Niger</td>
+                            	<td>Oud-Turnhout</td>
+                            	<td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      {%  include "dashboard/includes/dashboard_footer.html" %}
+    </div>
+  </div>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Optional JS -->
+  <script src="{% static 'vendor/chart.js/dist/Chart.min.js' %}"></script>
+  <script src="{% static 'vendor/chart.js/dist/Chart.extension.js' %}"></script>
+  <!-- Argon JS -->
+  <script src="{% static 'js/argon.js?v=1.0.0' %}"></script>
+  <!-- Fresh Table CSS -->
+  {%  include "dashboard/includes/fresh-table-assets.html" %}
+  <!-- fresh table ends -->
+</body>
+
+</html>

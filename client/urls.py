@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from django.views.generic import ListView
-from client.models import Client
+from . import views
 
 urlpatterns = [
-    url(r'^$', ListView.as_view(queryset=Client.objects.all(), template_name="client/client.html")),
+    url(r'^$', views.client, name="clients"),
+    url(r'^add_new_client$',views.add_new_client, name="add_new_clients")
 ]

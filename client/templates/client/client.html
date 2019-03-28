@@ -53,31 +53,49 @@
     <!-- Page content -->
     <div class="container-fluid mt--7">
 
-       <div class="row">
 
-	 <!---->
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow ">
-            <div class="card-body pt-0 pt-md-4">
-
-                {% block content %}
-
-                    {% for client in object_list %}
-                    <div class='text-center'>
-
-                        {{client.Client_name}}
-
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 ">
+                <div class="fresh-table bg-gradient-dark text-white shadow-black" id="dark-table">
+                    <div class="toolbar">
+                        <a href="add_new_client">
+							<button type="button" class="btn btn-outline-light material-icons ">add</button>
+						</a>
                     </div>
+                    <table id="fresh-table" class="table">
+                        <thead>
+                            <th data-field="name" data-sortable="true">Name</th>
+                        	<th data-field="gstin" data-sortable="true">Gstin</th>
+                            <th data-field="gstin" data-sortable="true">E-mail</th>
+                        	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                        </thead>
+                        <tbody>
+                            {% block client %}
+                    {% for client in client_data %}
+                    <tr>
+                    <td scope="row">
+                      {{ client.Client_Name }}
+                    </td>
+                    <td>
+                      {{ client.Client_Gstin }}
+                    </td>
+                    <td>
+                      {{ client.Client_Email }}
+                    </td>
+                    </tr>
                     {% endfor %}
-                {% endblock %}
+                    {% endblock %}
 
+                        </tbody>
+                    </table>
+                </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
+
 
       <!-- Footer -->
       {%  include "dashboard/includes/dashboard_footer.html" %}
@@ -91,8 +109,10 @@
   <script src="{% static 'vendor/chart.js/dist/Chart.min.js' %}"></script>
   <script src="{% static 'vendor/chart.js/dist/Chart.extension.js' %}"></script>
   <!-- Argon JS -->
-
   <script src="{% static 'js/argon.js?v=1.0.0' %}"></script>
+  <!-- Fresh Table CSS -->
+  {%  include "client/includes/client_table_assets.html" %}
+  <!-- fresh table ends -->
 </body>
 
 </html>

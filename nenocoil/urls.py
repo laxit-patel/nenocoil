@@ -9,11 +9,11 @@ urlpatterns = [
     url(r'^order/', include('order.urls')),
     url(r'^invoice/', include('invoice.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
-    url(r'^profile/', include('profile_page.urls')),
     url(r'^client/', include('client.urls')),
     url(r'^contact/', include('contact.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^product/', include('product.urls')),
+    url(r'^design/', include('design.urls')),
+    url(r'^drawing/', include('drawing.urls')),
     url(r'^admin/', admin.site.urls),
-
-
 ]

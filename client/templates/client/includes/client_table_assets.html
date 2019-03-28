@@ -1,0 +1,93 @@
+<!-- locating assets folder from django static directory -->
+<!-- this is a separete instanmce of general table asset if incase any app requires special settings for table -->
+{% load staticfiles %}
+
+<style>
+        #dark-table tbody tr:hover
+        {
+            color:black;
+            opacity: 0%;
+        }
+        </style>
+
+
+<link type='text/css' href="{% static 'vendor/fresh-table/assets/css/fresh-bootstrap-table.css' %}" rel="stylesheet" />
+  <!-- Fonts and icons for table    -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="{% static 'vendor/fresh-table/assets/js/bootstrap-table.js' %}"></script>
+  <script src="{% static 'vendor/fresh-table/assets/js/bootstrap.js' %}"></script>
+
+
+<script type="text/javascript">
+        var $table = $('#fresh-table'),
+            $alertBtn = $('#alertBtn'),
+            full_screen = false;
+
+        $().ready(function(){
+            $table.bootstrapTable({
+                toolbar: ".toolbar",
+                showRefresh: true,
+                search: true,
+                showToggle: true,
+                showColumns: true,
+                pagination: true,
+                striped: true,
+                sortable: true,
+                pageSize: 5,
+                pageList: [5,10,15,20,25],
+
+                formatShowingRows: function(pageFrom, pageTo, totalRows){
+                    //do nothing here, we don't want to show the text "showing x of y from..."
+                },
+                formatRecordsPerPage: function(pageNumber){
+                    return pageNumber + " rows visible";
+                },
+                icons: {
+                    refresh: 'fa fa-refresh',
+                    toggle: 'fa fa-th-list',
+                    columns: 'fa fa-columns',
+                    detailOpen: 'fa fa-plus-circle',
+                    detailClose: 'fa fa-minus-circle'
+                }
+            });
+        });
+
+        $(function () {
+            $alertBtn.click(function () {
+                alert("You pressed on Alert");
+            });
+        });
+
+
+        function operateFormatter(value, row, index) {
+            return [
+                '<div class="dropdown">',
+                '<a class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
+                '                          <i class="material-icons">more_vert</i>\n' +
+                '                        </a>',
+                '<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">',
+                '<a class="dropdown-item" href="">Edit</a>',
+                '<a class="dropdown-item" href="">View</a>',
+                '<a class="dropdown-item" href="">Delete</a>',
+                '</div>'
+            ].join('');
+        }
+
+        window.operateEvents = {
+            'click .like': function (e, value, row, index) {
+                alert('You click like icon, row: ' + JSON.stringify(row));
+                console.log(value, row, index);
+            },
+            'click .edit': function (e, value, row, index) {
+                console.log(value, row, index);
+            },
+            'click .remove': function (e, value, row, index) {
+                alert('You click remove icon, row: ' + JSON.stringify(row));
+                console.log(value, row, index);
+            }
+        };
+
+    </script>
+
